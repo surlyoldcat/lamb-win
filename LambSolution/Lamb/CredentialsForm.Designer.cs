@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CredentialsForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboRegion = new System.Windows.Forms.ComboBox();
             this.txtSecretAccessKey = new System.Windows.Forms.TextBox();
             this.txtAccessKeyId = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtAccount = new System.Windows.Forms.TextBox();
             this.radioEnterCreds = new System.Windows.Forms.RadioButton();
             this.radioProfileCreds = new System.Windows.Forms.RadioButton();
             this.btnOK = new System.Windows.Forms.Button();
@@ -45,12 +45,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboRegion);
             this.groupBox1.Controls.Add(this.txtSecretAccessKey);
             this.groupBox1.Controls.Add(this.txtAccessKeyId);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtAccount);
             this.groupBox1.Controls.Add(this.radioEnterCreds);
             this.groupBox1.Controls.Add(this.radioProfileCreds);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -60,10 +60,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select AWS Credentials for this Session";
             // 
+            // cboRegion
+            // 
+            this.cboRegion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboRegion.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboRegion.FormattingEnabled = true;
+            this.cboRegion.Location = new System.Drawing.Point(81, 118);
+            this.cboRegion.Name = "cboRegion";
+            this.cboRegion.Size = new System.Drawing.Size(205, 21);
+            this.cboRegion.TabIndex = 8;
+            // 
             // txtSecretAccessKey
             // 
             this.txtSecretAccessKey.Enabled = false;
-            this.txtSecretAccessKey.Location = new System.Drawing.Point(105, 119);
+            this.txtSecretAccessKey.Location = new System.Drawing.Point(105, 87);
             this.txtSecretAccessKey.Name = "txtSecretAccessKey";
             this.txtSecretAccessKey.ReadOnly = true;
             this.txtSecretAccessKey.Size = new System.Drawing.Size(181, 20);
@@ -72,7 +82,7 @@
             // txtAccessKeyId
             // 
             this.txtAccessKeyId.Enabled = false;
-            this.txtAccessKeyId.Location = new System.Drawing.Point(105, 93);
+            this.txtAccessKeyId.Location = new System.Drawing.Point(105, 61);
             this.txtAccessKeyId.Name = "txtAccessKeyId";
             this.txtAccessKeyId.ReadOnly = true;
             this.txtAccessKeyId.Size = new System.Drawing.Size(181, 20);
@@ -81,7 +91,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 122);
+            this.label3.Location = new System.Drawing.Point(40, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 5;
@@ -90,7 +100,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 96);
+            this.label2.Location = new System.Drawing.Point(36, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 4;
@@ -99,20 +109,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 70);
+            this.label1.Location = new System.Drawing.Point(6, 121);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Account";
-            // 
-            // txtAccount
-            // 
-            this.txtAccount.Enabled = false;
-            this.txtAccount.Location = new System.Drawing.Point(105, 67);
-            this.txtAccount.Name = "txtAccount";
-            this.txtAccount.ReadOnly = true;
-            this.txtAccount.Size = new System.Drawing.Size(181, 20);
-            this.txtAccount.TabIndex = 2;
+            this.label1.Text = "AWS Region";
             // 
             // radioEnterCreds
             // 
@@ -190,10 +191,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtAccount;
         private System.Windows.Forms.RadioButton radioEnterCreds;
         private System.Windows.Forms.RadioButton radioProfileCreds;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ComboBox cboRegion;
     }
 }

@@ -1,27 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Lamb.service;
 
 namespace Lamb.model
 {
     public class LambInvocationResult : OperationResult
-    {        
+    {
         public InvokeErrorInfo Error { get; set; }
         public string ReturnPayload { get; set; }
 
         public override string Format()
         {
-            StringBuilder sb = new StringBuilder(base.Format());
-            throw new NotImplementedException();
+            StringBuilder msg = new StringBuilder();
+            if (Success)
+            {
+                msg.AppendLine("Lambda invoked successfully.");
+                msg.AppendLine("Returned data:");
+                if (String.IsNullOrEmpty(ReturnPayload))
+                {
+                    msg.AppendLine(Constants.NULL_STRING);
+                }
+                else
+                {
+                    msg.AppendLine(ReturnPayload.PrettyPrintJson());
+                }
+            }
+            else
+            {
+                msg.AppendLine("Lambda invocation failed!");
+                msg.AppendLine("Error info:");
+                msg.AppendFormat("Error message: {0}{1}", Error.ErrorMessage, Environment.NewLine);
+                msg.AppendLine("Exception: ");
+                msg.AppendLine(Error.ExceptionDump);
+            }
+
+            //msg.AppendLine();
+            return msg.ToString();
         }
+
 
         public static LambInvocationResult Pass(string returnedPayload)
         {
             return new LambInvocationResult
             {
-                Success = true,                
+                Success = true,
                 ReturnPayload = returnedPayload
             };
         }
@@ -31,24 +53,31 @@ namespace Lamb.model
             return new LambInvocationResult
             {
                 Success = false,
-                Message = message,
                 Error = new InvokeErrorInfo
                 {
-                    CaughtException = ex,
-                    ErrorMessage = ex.Message
+                    ExceptionDump = ex.ToString(),
+                    ErrorMessage = message
                 }
             };
         }
 
-        public static LambInvocationResult Fail(string message)
+        public new static LambInvocationResult Fail(string message)
         {
-            return Fail(null, message);
+            return new LambInvocationResult
+            {
+                Success = false,
+                Error = new InvokeErrorInfo
+                {
+                    ErrorMessage = message,
+                    ExceptionDump = Constants.NULL_STRING
+                }
+            };
         }
     }
 
     public class InvokeErrorInfo : IInvokeErrorInfo
     {
         public string ErrorMessage { get; set; }
-        public Exception CaughtException { get; set; }
+        public string ExceptionDump { get; set; }
     }
 }

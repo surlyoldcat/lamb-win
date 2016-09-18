@@ -2,8 +2,6 @@
 
 namespace Lamb.service
 {
-   
-
     public enum CredentialsType
     {
         FromProfile,
@@ -18,5 +16,7 @@ namespace Lamb.service
             HttpStatusCode.Created,
             HttpStatusCode.OK
         };
+
+        public static readonly string NULL_STRING = "--none--";
     }
 }

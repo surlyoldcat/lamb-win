@@ -1,45 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Amazon;
-using Amazon.IdentityManagement;
-using Amazon.IdentityManagement.Model;
 using Amazon.Lambda;
 using Amazon.Lambda.Model;
 using Amazon.Runtime;
 using Lamb.model;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Lamb.service
 {
     internal class LambService : ILambService
     {
-        private AWSCredentials Credentials { get; set; }
-        private RegionEndpoint Region { get; set; }
-
         public LambService(AWSCredentials creds, RegionEndpoint region)
         {
             Credentials = creds;
             Region = region;
         }
 
+        private AWSCredentials Credentials { get; }
+        private RegionEndpoint Region { get; }
+
         public async Task<LambdaListResult> ListAllLambdas()
         {
+            //TODO undocumented feature, ListFunctions will not return more than 50
+            //items without making a request to AWS services team, it is an 
+            //account limit. so, have to use pagination to get all Lambdas, see
+            //https://github.com/aws/aws-sdk-js/issues/1118
             LambdaListResult retval;
             AmazonLambdaClient client = new AmazonLambdaClient(Credentials, Region);
             try
             {
-                var response = client.ListFunctions();
+                var request = new ListFunctionsRequest
+                {
+                    MaxItems = 1000
+                };
+                var response = client.ListFunctions(request);
                 response.EnsureSuccessResponse("Lambda:ListFunctions");
                 var proj = response.Functions.Select(f => new LambdaListItem
                 {
                     Arn = f.FunctionArn,
                     Name = f.FunctionName
-                });
+                }).OrderBy(lli => lli.Name);
                 retval = LambdaListResult.Pass(proj.ToList());
             }
             catch (Exception ex)
@@ -50,9 +52,8 @@ namespace Lamb.service
             {
                 client.Dispose();
             }
-            
-            return retval;
 
+            return retval;
         }
 
         public async Task<LambInvocationResult> Execute(LambdaInvokeInfo info)
@@ -91,16 +92,21 @@ namespace Lamb.service
         }
 
 
-
-        public static OperationResult VerifyCredentials(AWSCredentials creds)
+        public static OperationResult VerifyCredentials(AWSCredentials creds, RegionEndpoint region)
         {
+            // very simple way to do a basic credential check- see if they
+            // can be used to call the ListFunctions API method; 
             OperationResult retval;
-            AmazonIdentityManagementServiceClient iam = new AmazonIdentityManagementServiceClient(creds);
+            AmazonLambdaClient client = new AmazonLambdaClient(creds, region);
             try
             {
-                var response = iam.GetUser();
-                response.EnsureSuccessResponse("IAM:GetUser");
-                if (null != response.User && !String.IsNullOrEmpty(response.User.Arn))
+                ListFunctionsRequest request = new ListFunctionsRequest
+                {
+                    MaxItems = 1
+                };
+                var response = client.ListFunctions(request);
+                response.EnsureSuccessResponse("Lambda:ListFunctions");
+                if (null != response.Functions && response.Functions.Any())
                 {
                     retval = OperationResult.Pass();
                 }
@@ -116,7 +122,7 @@ namespace Lamb.service
             }
             finally
             {
-                iam.Dispose();
+                client.Dispose();
             }
             return retval;
         }

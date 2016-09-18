@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Amazon;
-using Amazon.Runtime;
+﻿using System.Threading.Tasks;
 using Lamb.model;
 
 namespace Lamb.service
 {
-
     public interface ILambService
     {
         Task<LambdaListResult> ListAllLambdas();
