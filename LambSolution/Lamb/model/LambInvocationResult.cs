@@ -22,7 +22,16 @@ namespace Lamb.model
                 }
                 else
                 {
-                    msg.AppendLine(ReturnPayload.PrettyPrintJson());
+                    string output;
+                    if (ReturnPayload.IsValidJson())
+                    {
+                        output = ReturnPayload.PrettyPrintJson();
+                    }
+                    else
+                    {
+                        output = ReturnPayload;
+                    }
+                    msg.AppendLine(output);
                 }
             }
             else

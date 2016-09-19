@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,22 +23,16 @@ namespace Lamb.service
         private RegionEndpoint Region { get; }
 
         public async Task<LambdaListResult> ListAllLambdas()
-        {
-            //TODO undocumented feature, ListFunctions will not return more than 50
-            //items without making a request to AWS services team, it is an 
-            //account limit. so, have to use pagination to get all Lambdas, see
-            //https://github.com/aws/aws-sdk-js/issues/1118
+        {            
             LambdaListResult retval;
             AmazonLambdaClient client = new AmazonLambdaClient(Credentials, Region);
             try
             {
-                var request = new ListFunctionsRequest
-                {
-                    MaxItems = 1000
-                };
-                var response = client.ListFunctions(request);
-                response.EnsureSuccessResponse("Lambda:ListFunctions");
-                var proj = response.Functions.Select(f => new LambdaListItem
+                //undocumented feature, ListFunctions will not return more than 50
+                //items without making a request to AWS services team, it is an 
+                //account limit. so, have to use pagination to get all Lambdas
+                var functionConfigs = await FetchAllFunctionsPaged(client);
+                var proj = functionConfigs.Select(f => new LambdaListItem
                 {
                     Arn = f.FunctionArn,
                     Name = f.FunctionName
@@ -55,6 +50,7 @@ namespace Lamb.service
 
             return retval;
         }
+
 
         public async Task<LambInvocationResult> Execute(LambdaInvokeInfo info)
         {
@@ -125,6 +121,30 @@ namespace Lamb.service
                 client.Dispose();
             }
             return retval;
+        }
+
+        private static async Task<List<FunctionConfiguration>> FetchAllFunctionsPaged(AmazonLambdaClient client, ListFunctionsResponse prevResponse = null)
+        {
+            List<FunctionConfiguration> functions = new List<FunctionConfiguration>(100);
+            // if the previous call had a NextMarker, we're in a recursive paged fetch
+            var request = new ListFunctionsRequest
+            {
+                MaxItems = 100,
+                Marker = prevResponse?.NextMarker
+            };
+            var response = await client.ListFunctionsAsync(request);
+            response.EnsureSuccessResponse("Lambda:ListFunctions");
+            if (null != response.Functions && response.Functions.Any())
+            {
+                //grab this page of lambdas
+                functions = response.Functions;
+                if (!String.IsNullOrEmpty(response.NextMarker))
+                {
+                    //there's more to fetch: recurse
+                    functions.AddRange(await FetchAllFunctionsPaged(client, response));
+                }
+            }
+            return functions;
         }
 
         private static string ReadPayloadStream(MemoryStream payload)

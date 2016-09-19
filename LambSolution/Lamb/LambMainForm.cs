@@ -28,7 +28,7 @@ namespace Lamb
         {
         }
 
-        private async void LambMainForm_Load(object sender, EventArgs e)
+        private void LambMainForm_Load(object sender, EventArgs e)
         {
             LambdaSvc = new LambService(UserAwsCredentials, AwsRegion);
             PopulateLambdas();
@@ -36,10 +36,15 @@ namespace Lamb
 
         private async void PopulateLambdas()
         {
+            SetWaitState(true);
+            SetOutputTextFromWorker("Fetching Lambdas... ");
             var result = await LambdaSvc.ListAllLambdas();
+            AppendOutputText(String.Format("All {0} of them...{1}", result.Lambdas.Count, Environment.NewLine));
+            SetWaitState(false);            
             cboLambda.DataSource = result.Lambdas;
             cboLambda.DisplayMember = "Name";
             cboLambda.ValueMember = "Name";
+            AppendOutputText("Done!");
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
