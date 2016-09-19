@@ -103,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -122,8 +123,9 @@
     <Analyzer Include="..\packages\AWSSDK.Lambda.3.1.4.7\analyzers\dotnet\cs\AWSSDK.Lambda.CodeAnalysis.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sheep2.ico" />
+    <Resource Include="sheep2.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

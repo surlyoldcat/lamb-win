@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lamb", "Lamb\Lamb.csproj", "{A4277F7F-AF8C-4ABE-A60F-240E9C34721A}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LambSetup", "LambSetup\LambSetup.vdproj", "{14C02FD8-DC1F-4429-AEBE-30430E13A820}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LambSetup", "LambSetup\LambSetup.vdproj", "{C0E6C718-3A41-4BD7-A991-C380199E106F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,10 @@ Global
 		{A4277F7F-AF8C-4ABE-A60F-240E9C34721A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4277F7F-AF8C-4ABE-A60F-240E9C34721A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4277F7F-AF8C-4ABE-A60F-240E9C34721A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14C02FD8-DC1F-4429-AEBE-30430E13A820}.Debug|Any CPU.ActiveCfg = Debug
-		{14C02FD8-DC1F-4429-AEBE-30430E13A820}.Release|Any CPU.ActiveCfg = Release
+		{C0E6C718-3A41-4BD7-A991-C380199E106F}.Debug|Any CPU.ActiveCfg = Debug
+		{C0E6C718-3A41-4BD7-A991-C380199E106F}.Debug|Any CPU.Build.0 = Debug
+		{C0E6C718-3A41-4BD7-A991-C380199E106F}.Release|Any CPU.ActiveCfg = Release
+		{C0E6C718-3A41-4BD7-A991-C380199E106F}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

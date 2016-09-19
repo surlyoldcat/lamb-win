@@ -15,32 +15,32 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0368D3D11288449FB83C3C8C7E98EE2A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_58DFBEA73FD9FC50308DED62C3007953"
-        "OwnerKey" = "8:_0368D3D11288449FB83C3C8C7E98EE2A"
+        "OwnerKey" = "8:_94AA3B3F53C14FEABFDA6D4F22085B8F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7C7705B1303D0BA38132D601ACF9FCB4"
-        "OwnerKey" = "8:_0368D3D11288449FB83C3C8C7E98EE2A"
+        "OwnerKey" = "8:_94AA3B3F53C14FEABFDA6D4F22085B8F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_94AA3B3F53C14FEABFDA6D4F22085B8F"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EDD4A467F63C2ADD990CDB78558A150E"
-        "OwnerKey" = "8:_0368D3D11288449FB83C3C8C7E98EE2A"
+        "OwnerKey" = "8:_94AA3B3F53C14FEABFDA6D4F22085B8F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FFACA02DAA9B9E85E9C472758F5D803F"
-        "OwnerKey" = "8:_0368D3D11288449FB83C3C8C7E98EE2A"
+        "OwnerKey" = "8:_94AA3B3F53C14FEABFDA6D4F22085B8F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0368D3D11288449FB83C3C8C7E98EE2A"
+        "OwnerKey" = "8:_94AA3B3F53C14FEABFDA6D4F22085B8F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -97,6 +97,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -113,6 +121,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -134,7 +158,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.5"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.6.1"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=395269"
                 }
@@ -323,7 +347,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Lamb"
         "ProductCode" = "8:{5133132E-E5C7-4134-9FA1-C3B634B95962}"
-        "PackageCode" = "8:{6B11754A-6913-43E0-A090-025A0F4E2002}"
+        "PackageCode" = "8:{76A7DC32-2757-474F-A95C-DDAA82E87AAB}"
         "UpgradeCode" = "8:{49527166-009B-4C4F-9A27-B5BE40C61B67}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -340,8 +364,8 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Lamb, Duh!"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
-        "ARPIconIndex" = "3:0"
+        "ARPPRODUCTICON" = "8:_94AA3B3F53C14FEABFDA6D4F22085B8F"
+        "ARPIconIndex" = "3:32512"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
@@ -443,15 +467,15 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_929CAAB0FE7C4E638765F94DEAE62765"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_5852499EA3A9414CA94779BE1D4E7F27"
             {
-            "Name" = "8:Shortcut to Primary output from Lamb (Active)"
+            "Name" = "8:Shortcut to Primary output from Lamb (Release Any CPU)"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_0368D3D11288449FB83C3C8C7E98EE2A"
+            "Target" = "8:_94AA3B3F53C14FEABFDA6D4F22085B8F"
             "Folder" = "8:_677543A9E37F4705AD145CFADF5FF0B6"
             "WorkingFolder" = "8:_3CAED156EB3041FFB3F79A65D8CC4475"
             "Icon" = "8:"
@@ -856,35 +880,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0368D3D11288449FB83C3C8C7E98EE2A"
-            {
-            "SourcePath" = "8:..\\Lamb\\obj\\Debug\\Lamb.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_3CAED156EB3041FFB3F79A65D8CC4475"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{A4277F7F-AF8C-4ABE-A60F-240E9C34721A}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7B29620E952A41F99AC57401C0FCE4E6"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7C910205289A4472BCC7DE88134C9DF7"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -904,8 +900,36 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
+            "OutputConfiguration" = "8:Release|Any CPU"
             "OutputGroupCanonicalName" = "8:RuntimeImplementation"
+            "OutputProjectGuid" = "8:{A4277F7F-AF8C-4ABE-A60F-240E9C34721A}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_94AA3B3F53C14FEABFDA6D4F22085B8F"
+            {
+            "SourcePath" = "8:..\\Lamb\\obj\\Release\\Lamb.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3CAED156EB3041FFB3F79A65D8CC4475"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:Release|Any CPU"
+            "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{A4277F7F-AF8C-4ABE-A60F-240E9C34721A}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
